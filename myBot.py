@@ -1,8 +1,6 @@
 # -*- coding:UTF-8 -*-
 # 导入模块
 from wxpy import *
-# 初始化机器人，扫码登陆
-bot = Bot()
 # 如果二维码变形，传入console_qr=1（或其他倍数）来进行调整字幅宽度
 # 启用缓存，来保存自己的登录状态
 bot = Bot(console_qr=True, cache_path=True)
