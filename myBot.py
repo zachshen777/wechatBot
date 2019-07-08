@@ -1,19 +1,42 @@
-# -*- coding:UTF-8 -*-
-# 导入模块
+# -*- coding: UTF-8 -*-
 from wxpy import *
-# 如果二维码变形，传入console_qr=1（或其他倍数）来进行调整字幅宽度
-# 启用缓存，来保存自己的登录状态
+m wxpy import *
+# 扫码登录
 bot = Bot(console_qr=True, cache_path=True)
-# 启用puid属性
+# 启用puid属性(可作为用户唯一标识)
 bot.enable_puid()
 # 接入图灵机器人
-tuling = Tuling("508ea322942e446f81b49fb8552fdb74")
-# 使用图灵回复消息
-# 自动回复所有文字消息
-@bot.register(msg_types=TEXT)
-def auto_reply_all(msg):
-    tuling.do_reply(msg)
-    print(msg)
-# 进入 Python 命令行、让程序保持运行
-# 推荐使用
+tuling = Tuling("--tuling's key--")
+
+# 自定义多群组
+groups = []
+def my_groups()
+    groups.append(ensure_one(bot.groups().search('群组1'.decode("utf-8"))))
+    groups.append(ensure_one(bot.groups().search('群组2'.decode("utf-8"))))
+print(groups)
+
+# 自定义多好友
+friends = []
+def my_friends()
+    friends.append(ensure_one(bot.friends().search('好友1'.decode("utf-8"))))
+    friends.append(ensure_one(bot.friends().search('好友2'.decode("utf-8"))))
+print(friends)
+
+# 自定义群组内自动回复
+@bot.register(groups, TEXT)
+def tuling_auto_reply(msg):
+        #log.info(msg)
+        # 如果是群聊但未被@则不做回复
+        print(msg)
+        if isinstance(msg.chat, Group) and not msg.is_at :
+                #log.info ("<TL> group no at")
+                return
+        else:
+                #log.info ("<TL> tuling auto reply")
+                tuling.do_reply(msg)
+# 自定义好友自动回复
+@bot.register(friends, TEXT)
+def tuling_auto_reply1(msg):
+        tuling.do_reply(msg)
+# 堵塞
 embed()
