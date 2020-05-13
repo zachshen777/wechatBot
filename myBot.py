@@ -5,20 +5,16 @@ bot = Bot(console_qr=True, cache_path=True)
 # 启用puid属性(可作为用户唯一标识)
 bot.enable_puid()
 # 接入图灵机器人
-tuling = Tuling("--tuling's key--")
-
+tuling = Tuling("key")
 # 自定义多群组
 groups = []
 def my_groups()
-    groups.append(ensure_one(bot.groups().search('群组1'.decode("utf-8"))))
-    groups.append(ensure_one(bot.groups().search('群组2'.decode("utf-8"))))
+    groups.append(ensure_one(bot.groups().search('test'.decode("utf-8"))))
 print(groups)
-
 # 自定义多好友
 friends = []
 def my_friends()
-    friends.append(ensure_one(bot.friends().search('好友1'.decode("utf-8"))))
-    friends.append(ensure_one(bot.friends().search('好友2'.decode("utf-8"))))
+    friends.append(ensure_one(bot.friends().search('小马'.decode("utf-8"))))
 print(friends)
 
 # 自定义群组内自动回复
