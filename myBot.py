@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 from wxpy import *
-m wxpy import *
 # 扫码登录
 bot = Bot(console_qr=True, cache_path=True)
 # 启用puid属性(可作为用户唯一标识)
